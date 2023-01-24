@@ -17,3 +17,6 @@ spring:
 ### Port for server
 server:
   port: 8080
+
+###You can find the collection of the postman under this link:
+-- https://github.com/hasbikaynak/TechnicalTask/blob/master/A_AATechnicalTask.postman_collection.json
