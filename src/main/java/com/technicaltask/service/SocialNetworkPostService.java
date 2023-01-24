@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -30,10 +29,8 @@ public class SocialNetworkPostService {
     }
 
     public SocialNetworkPostResponse findSocialNetworkPostById(String id) {
-       SocialNetworkPost socialNetworkPost = socialNetworkPostRepository.findById(Long.valueOf(id)).orElseThrow(()->
-                new ResourceNotFoundException(String.format(ErrorMessage.SOCIALNETWORKPOST_NOT_FOUND_MESSAGE,id))
-                );
-       SocialNetworkPostResponse socialNetworkPostResponse = new SocialNetworkPostResponse();
+        SocialNetworkPost socialNetworkPost = findSocialById(id);
+        SocialNetworkPostResponse socialNetworkPostResponse = new SocialNetworkPostResponse();
        socialNetworkPostResponse.setPostDate(socialNetworkPost.getPostDate());
        socialNetworkPostResponse.setAuthor(socialNetworkPost.getAuthor());
        socialNetworkPostResponse.setViewCount(socialNetworkPost.getViewCount());
@@ -51,13 +48,22 @@ List<SocialNetworkPostListDTO> postListDTO = modelMapper.map(postList, new TypeT
     }
 
     public void updateSocialNetworkPostById(String id, SocialNetworkPostRequest socialNetworkPostRequest) {
-        SocialNetworkPost socialNetworkPost = socialNetworkPostRepository.findById(Long.valueOf(id)).orElseThrow(()->
-                new ResourceNotFoundException(String.format(ErrorMessage.SOCIALNETWORKPOST_NOT_FOUND_MESSAGE,id))
-        );
+        SocialNetworkPost socialNetworkPost = findSocialById(id);
         socialNetworkPost.setContent(socialNetworkPostRequest.getContent());
         socialNetworkPost.setPostDate(socialNetworkPostRequest.getPostDate());
         socialNetworkPost.setAuthor(socialNetworkPostRequest.getAuthor());
         socialNetworkPost.setViewCount(socialNetworkPostRequest.getViewCount());
         socialNetworkPostRepository.save(socialNetworkPost);
+    }
+
+    public void deleteSocialNetworkPostById(String id) {
+        SocialNetworkPost socialNetworkPost = findSocialById(id);
+        socialNetworkPostRepository.deleteById(socialNetworkPost.getId());
+    }
+
+    private SocialNetworkPost findSocialById(String id) {
+        return socialNetworkPostRepository.findById(Long.valueOf(id)).orElseThrow(()->
+                new ResourceNotFoundException(String.format(ErrorMessage.SOCIALNETWORKPOST_NOT_FOUND_MESSAGE, id))
+        );
     }
 }

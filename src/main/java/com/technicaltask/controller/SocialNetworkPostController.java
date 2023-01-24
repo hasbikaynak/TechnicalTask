@@ -46,4 +46,13 @@ public class SocialNetworkPostController {
         TTResponse response = new TTResponse(ResponseMessage.SOCIAL_NETWORK_POST_UPDATE_RESPONSE_MESSAGE, true);
         return ResponseEntity.ok(response);
     }
+
+    @DeleteMapping(RestApi.DELETE_SOCIAL_NETWORK_POST_BY_ID)
+    public ResponseEntity<TTResponse> deleteSocialNetworkPost(@PathVariable String id){
+            socialNetworkPostService.deleteSocialNetworkPostById(id);
+        TTResponse response = new TTResponse(ResponseMessage.SOCIAL_NETWORK_DELETE_UPDATE_RESPONSE_MESSAGE, true);
+        return ResponseEntity.ok(response);
+    }
+
+    //TODO: method for posts with the top ten highest view counts
 }

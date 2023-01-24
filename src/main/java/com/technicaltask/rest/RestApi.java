@@ -3,6 +3,7 @@ package com.technicaltask.rest;
 public class RestApi {
     public static final String GET_ALL_SOCIAL_NETWORK_POST = "/getAll";
     public static final String UPDATE_SOCIAL_NETWORK_BY_ID = "/{id}";
+    public static final String DELETE_SOCIAL_NETWORK_POST_BY_ID = "/{id}";
 
     private RestApi() {
     }
