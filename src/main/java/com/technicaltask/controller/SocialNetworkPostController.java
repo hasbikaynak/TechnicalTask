@@ -54,5 +54,9 @@ public class SocialNetworkPostController {
         return ResponseEntity.ok(response);
     }
 
-    //TODO: method for posts with the top ten highest view counts
+    @GetMapping(RestApi.GET_TOP_10_HIGHEST_VIEWCOUNTS_SOCIAL_NETWORK_POST)  //  //api/v1/socialnetworkpost/getTopTenViewCounts
+    public ResponseEntity<SocialNetworkPostListResponse> getTopHighestViewCountsSocialNetworkPost(){
+        SocialNetworkPostListResponse socialNetworkPostResponseList = socialNetworkPostService.getTopTenHighestViewCountsSocialNetworkPosts();
+        return ResponseEntity.ok(socialNetworkPostResponseList);
+    }
 }

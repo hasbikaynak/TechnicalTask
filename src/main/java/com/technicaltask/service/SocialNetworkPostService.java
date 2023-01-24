@@ -66,4 +66,11 @@ List<SocialNetworkPostListDTO> postListDTO = modelMapper.map(postList, new TypeT
                 new ResourceNotFoundException(String.format(ErrorMessage.SOCIALNETWORKPOST_NOT_FOUND_MESSAGE, id))
         );
     }
+
+    public SocialNetworkPostListResponse getTopTenHighestViewCountsSocialNetworkPosts() {
+       List<SocialNetworkPost> socialNetworkPostList = socialNetworkPostRepository.findTop10ByOrderByViewCountDesc();
+        SocialNetworkPostListResponse socialNetworkPostListResponse = new SocialNetworkPostListResponse();
+        socialNetworkPostListResponse.setSocialNetworkPostList(socialNetworkPostList);
+        return socialNetworkPostListResponse;
+    }
 }
