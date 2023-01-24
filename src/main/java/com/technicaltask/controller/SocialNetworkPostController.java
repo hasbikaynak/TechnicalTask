@@ -39,4 +39,11 @@ public class SocialNetworkPostController {
         SocialNetworkPostListResponse socialNetworkPostResponseList = socialNetworkPostService.getAllSocialNetworkPosts();
         return ResponseEntity.ok(socialNetworkPostResponseList);
     }
+
+    @PutMapping(RestApi.UPDATE_SOCIAL_NETWORK_BY_ID)   //  //api/v1/socialnetworkpost/1
+    public ResponseEntity<TTResponse> updateSocialNetworkPost(@PathVariable String id, @Valid @RequestBody SocialNetworkPostRequest socialNetworkPostRequest){
+        socialNetworkPostService.updateSocialNetworkPostById(id,socialNetworkPostRequest);
+        TTResponse response = new TTResponse(ResponseMessage.SOCIAL_NETWORK_POST_UPDATE_RESPONSE_MESSAGE, true);
+        return ResponseEntity.ok(response);
+    }
 }

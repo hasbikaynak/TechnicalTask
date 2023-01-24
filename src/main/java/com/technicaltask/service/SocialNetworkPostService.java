@@ -46,9 +46,18 @@ public class SocialNetworkPostService {
         SocialNetworkPostListResponse socialNetworkPostListResponse = new SocialNetworkPostListResponse();
         socialNetworkPostListResponse.setSocialNetworkPostList(socialNetworkPost);
        /*ModelMapper modelMapper = new ModelMapper();
-List<SocialNetworkPostListDTO> postListDTO = modelMapper.map(postList, new TypeToken<List<SocialNetworkPostListDTO>>(){}.getType());
-socialNetworkPost.stream().map(post -> new SocialNetworkPostListResponse(post.getId(), post.getPostDate(),post.getAuthor(),post.getContent(),post.getViewCount())).collect(Collectors.toList())
-*/
+List<SocialNetworkPostListDTO> postListDTO = modelMapper.map(postList, new TypeToken<List<SocialNetworkPostListDTO>>(){}.getType());*/
         return socialNetworkPostListResponse;
+    }
+
+    public void updateSocialNetworkPostById(String id, SocialNetworkPostRequest socialNetworkPostRequest) {
+        SocialNetworkPost socialNetworkPost = socialNetworkPostRepository.findById(Long.valueOf(id)).orElseThrow(()->
+                new ResourceNotFoundException(String.format(ErrorMessage.SOCIALNETWORKPOST_NOT_FOUND_MESSAGE,id))
+        );
+        socialNetworkPost.setContent(socialNetworkPostRequest.getContent());
+        socialNetworkPost.setPostDate(socialNetworkPostRequest.getPostDate());
+        socialNetworkPost.setAuthor(socialNetworkPostRequest.getAuthor());
+        socialNetworkPost.setViewCount(socialNetworkPostRequest.getViewCount());
+        socialNetworkPostRepository.save(socialNetworkPost);
     }
 }
