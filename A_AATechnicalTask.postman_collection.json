@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "056d581f-f23b-45dc-aae5-dabbece7e947",
+		"name": "A_AATechnicalTask",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18145618"
+	},
+	"item": [
+		{
+			"name": "SocialNetworkPostController",
+			"item": [
+				{
+					"name": "saveNewSocialNetworkPost",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"postDate\":\"2022-01-24 10:26:10\",\r\n    \"author\":\"Testing name4\",\r\n    \"content\":\"Action\",\r\n    \"viewCount\":13\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSocialNetworkPostById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllSocialNetworkPost",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/getAll",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSocialNetworkPost",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSocialNetworkPost",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTop10HighestViewCounts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/getTopTenViewCounts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"getTopTenViewCounts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
