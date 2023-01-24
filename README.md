@@ -20,3 +20,6 @@ server:
 
 ###You can find the collection of the postman under this link:
 -- https://github.com/hasbikaynak/TechnicalTask/blob/master/A_AATechnicalTask.postman_collection.json
+
+*Note that, you'll have to add new environment to the postman collection. The environment has just one partucilar key for the local url which is:
+variable is url, initial and current values are http://localhost:8080/api/v1/socialnetworkpost
