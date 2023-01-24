@@ -2,6 +2,7 @@
 
 METADATA
 for PostgreSQL connection:
+user of the db is "postgres" 
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5433/technicaltask_db
